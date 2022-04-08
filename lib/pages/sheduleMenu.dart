@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import '../../model/homelist.dart';
-import '../design/app_theme.dart';
 
-class AdminMenu extends StatefulWidget {
-  const AdminMenu({Key? key}) : super(key: key);
+import '../model/sheduleUser.dart';
+import 'design/app_theme.dart';
+
+class SheduleMenu extends StatefulWidget {
+  const SheduleMenu({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _SheduleMenu createState() => _SheduleMenu();
 }
 
-class _MyHomePageState extends State<AdminMenu> with TickerProviderStateMixin {
-  List<HomeList> homeList = HomeList.homeList;
+class _SheduleMenu extends State<SheduleMenu> with TickerProviderStateMixin {
+  List<SheduleUser> homeList = SheduleUser.sheduleUser;
   AnimationController? animationController;
   bool multiple = true;
 
@@ -35,7 +36,7 @@ class _MyHomePageState extends State<AdminMenu> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 157, 211, 255),
+      backgroundColor: Color.fromARGB(255, 146, 215, 255),
       body: FutureBuilder<bool>(
         future: getData(),
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
@@ -125,12 +126,12 @@ class _MyHomePageState extends State<AdminMenu> with TickerProviderStateMixin {
               height: AppBar().preferredSize.height - 8,
             ),
           ),
-          Expanded(
+          const Expanded(
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 4),
+                padding: EdgeInsets.only(top: 4),
                 child: Text(
-                  'Cric Info Admin',
+                  'Match Shedules',
                   style: TextStyle(
                     fontSize: 22,
                     color: AppTheme.darkText,
@@ -145,7 +146,7 @@ class _MyHomePageState extends State<AdminMenu> with TickerProviderStateMixin {
             child: Container(
               width: AppBar().preferredSize.height - 8,
               height: AppBar().preferredSize.height - 8,
-              color: Color.fromARGB(255, 140, 201, 255),
+              color: Color.fromARGB(255, 125, 214, 255),
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
@@ -179,7 +180,7 @@ class HomeListView extends StatelessWidget {
       this.animation})
       : super(key: key);
 
-  final HomeList? listData;
+  final SheduleUser? listData;
   final VoidCallback? callBack;
   final AnimationController? animationController;
   final Animation<double>? animation;

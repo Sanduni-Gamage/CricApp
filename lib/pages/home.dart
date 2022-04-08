@@ -1,8 +1,11 @@
-import 'package:cricketapp/homescreen/dash_screen.dart';
+import 'package:cricketapp/pages/Admin/sheduleMenuAdmin.dart';
+import 'package:cricketapp/pages/Sample.dart';
+import 'package:cricketapp/pages/shedule.dart';
+import 'package:cricketapp/pages/sheduleMenu.dart';
 import 'package:cricketapp/pages/teamView.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -11,37 +14,28 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
- 
 
   final pages = [
-     Page1(),
+    const Page1(),
     const Page2(),
     const Page3(),
     const Page4(),
   ];
 
   @override
-
-  
   Widget build(BuildContext context) {
-
-    
-   
     return Scaffold(
       backgroundColor: Colors.white,
-      
       body: pages[pageIndex],
       bottomNavigationBar: buildMyNavBar(context),
     );
-
-    
   }
 
   Container buildMyNavBar(BuildContext context) {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: Color.fromARGB(255, 110, 163, 255),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -78,12 +72,12 @@ class _HomePageState extends State<HomePage> {
             },
             icon: pageIndex == 1
                 ? const Icon(
-                    Icons.work_rounded,
+                    Icons.flag_outlined,
                     color: Colors.white,
                     size: 35,
                   )
                 : const Icon(
-                    Icons.work_outline_outlined,
+                    Icons.flag_outlined,
                     color: Colors.white,
                     size: 35,
                   ),
@@ -132,26 +126,24 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class Page1 extends StatefulWidget {
-
-  Page1({Key? key}) : super(key: key);
-
-  @override
-  State<Page1> createState() => _Page1State();
-  
-}
-
-class _Page1State extends State<Page1> with TickerProviderStateMixin{
- AnimationController? animationController;
+class Page1 extends StatelessWidget {
+  const Page1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-  animationController = AnimationController(
-        duration: const Duration(milliseconds: 600), vsync: this);
-    return DashScreen(animationController: animationController,);
-   // super.initState();
-   // return DashScreen(animationController: animationController,);
+    return Container(
+      color: Colors.white,
+      child: Center(
+        child: Text(
+          "Page Number 1",
+          style: TextStyle(
+            color: Colors.blue[900],
+            fontSize: 45,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -169,19 +161,7 @@ class Page3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          "Page Number 3",
-          style: TextStyle(
-            color: Colors.blue[900],
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
+    return SheduleMenu();
   }
 }
 
@@ -190,6 +170,6 @@ class Page4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MyHomePage();
   }
 }
